@@ -21,8 +21,8 @@ class Settings(BaseSettings):
     TOKEN_ALGORITHM = "HS256"
     ACCESS_TOKEN_JWT_SUBJECT = "access"
 
-    EMAILHUNTER_API_KEY: str
-    CLEARBIT_API_KEY: str
+    EMAILHUNTER_API_KEY: str = ""
+    CLEARBIT_API_KEY: str = ""
 
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = [
         "http://localhost",
