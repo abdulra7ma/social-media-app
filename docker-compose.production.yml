@@ -1,0 +1,44 @@
+version: "3.7"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/development/Dockerfile
+    env_file:
+      - ./docker/production/.env
+      - ./docker/production/.env.db
+    depends_on:
+      - postgres
+      - redis
+    command: bash -c "uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+  postgres:
+    image: postgres:14-bullseye
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=social_media
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    expose:
+      - 5432
+
+  redis:
+    image: redis:6.2.8-bullseye
+    volumes:
+      - redis_data:/data
+
+  nginx:
+    build: ./docker/production/nginx/
+    ports:
+      - 80:80
+    volumes:
+      - ./docker/production/nginx/socail_media_site.conf:/etc/nginx/socail_media_site.conf:ro
+      - ./static:/app/static:ro
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  redis_data:

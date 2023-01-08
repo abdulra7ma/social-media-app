@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14-bullseye
+    environment:
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=testpassword
+      - POSTGRES_DB=test_db
+
+  redis:
+    image: redis:6.2.8-bullseye
+
+  tests:
+    build:
+      context: .
+      dockerfile: ./docker/test/Dockerfile
+    command: pytest .
+    env_file:
+      - ./docker/test/.env.db
+      - ./docker/test/.env
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - .:/app:z
