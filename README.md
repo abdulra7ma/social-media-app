@@ -5,6 +5,7 @@ This is a social networking application that allows users to sign up, log in, cr
 ### Prerequisites
 * Docker
 * Docker Compose
+* `EMAILHUNTER_API_KEY` you first get the email huntur api key inorder to correctly run the app `https://hunter.io/email-verifier`
 
 ### Development 
 1. Make sure you have Docker and Docker Compose installed on your machine. 
@@ -13,7 +14,7 @@ This is a social networking application that allows users to sign up, log in, cr
 git clone https://github.com/abdulra7ma/social-media-app.git
 cd social-media-app
 ```
-3. Navigate to the `development` dir in the `docker` repository and create a `.env` file and `.env.db`. This file should contain all the environment variables needed for the app to run properly. An example of this file can be found in `.env.example` and `.env.db.example`.
+3. Navigate to the `development` dir in the `docker` repository and create a `.env` file and `.env.db` and then update `EMAILHUNTER_API_KEY` in the `.env` file. This file should contain all the environment variables needed for the app to run properly. An example of this file can be found in `.env.example` and `.env.db.example`.
 ```shell
 cd docker/development
 touch .env
@@ -39,7 +40,7 @@ docker-compose -f docker-compose.development.yml up -d
 git clone https://github.com/abdulra7ma/social-media-app.git
 cd social-media-app
 ```
-3. Navigate to the `production` dir in the `docker` repository and create a `.env` file and `.env.db`. This file should contain all the environment variables needed for the app to run properly. An example of this file can be found in `.env.example` and `.env.db.example`.
+3. Navigate to the `production` dir in the `docker` repository and create a `.env` file and `.env.db` and then update `EMAILHUNTER_API_KEY` in the `.env` file.. This file should contain all the environment variables needed for the app to run properly. An example of this file can be found in `.env.example` and `.env.db.example`.
 ```shell
 cd docker/development
 touch .env
@@ -66,7 +67,7 @@ docker-compose -f docker-compose.production.yml up -d
 git clone https://github.com/abdulra7ma/social-media-app.git
 cd social-media-app
 ```
-3. Navigate to the `test` dir in the `docker` repository and create a `.env` file and `.env.db`. This file should contain all the environment variables needed for the app to run properly. An example of this file can be found in `.env.example` and `.env.db.example`.
+3. Navigate to the `test` dir in the `docker` repository and create a `.env` file and `.env.db` and then update `EMAILHUNTER_API_KEY` in the `.env` file.. This file should contain all the environment variables needed for the app to run properly. An example of this file can be found in `.env.example` and `.env.db.example`.
 ```shell
 cd docker/development
 touch .env
